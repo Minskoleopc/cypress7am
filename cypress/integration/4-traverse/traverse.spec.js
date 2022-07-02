@@ -104,4 +104,16 @@ describe('Tranverse method in cypress',function(){
        
     })
 
+    it.only('To get parent DOM element of elements, use the .parent() command.',function(){
+        cy.visit('http://www.webdriveruniversity.com/Data-Table/index.html')
+        cy.get('#fruits').parent().should('have.class','traversal-food-list')
+        
+    })
+
+    it.only('To get parents DOM element of elements until other element, use the .parentsUntil() command.',function(){
+        cy.visit('http://www.webdriveruniversity.com/Data-Table/index.html')
+        cy.get('#fruits').parentsUntil('.col-sm-12').should('have.length',2)
+        
+    })
+
 })
