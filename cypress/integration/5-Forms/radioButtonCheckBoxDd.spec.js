@@ -59,14 +59,31 @@ describe('verufy the functionality of checkbox, radio Button and Drop down', fun
     // we can select the drop down values by text and by value attribute
     // conventional drop and the select method will work if the tag is select
 
-    it.only('verify the functionality for all the radio buttons', function () {
-
+    it('verify the functionality for all the radio buttons', function () {
         // by text
        cy.get('#dropdowm-menu-1').select('Python').should('have.value','python')
-
        // by value
        cy.get('#dropdowm-menu-1').select('sql').should('have.value','sql')
     })
 
+    it('verify the selection for all the dropdown',function(){
+        let selectValues = ['python','testng','javascript']
+        cy.get('.section-title').first().children().each(function(el,index){
+            cy.wrap(el).select(selectValues[index]).should('have.value',selectValues[index])
+        })
+    })
+
+
+
+    it('verify the functionality to check whether the element is enabled or disable',function(){
+        cy.get('input[value="cabbage"]').should('be.disabled')
+    })
   
+    it.only('verify whether the drop down value is disabled',function(){
+
+        cy.get('#fruit-selects').children()
+        .filter('option[disabled="disabled"]')
+        .should('have.text',"Orange").and('be.disabled')
+
+    })
 })
