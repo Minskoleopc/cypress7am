@@ -1,0 +1,4 @@
+npm init
+npm install cypress@9.7
+npm install npx
+npx cypress open

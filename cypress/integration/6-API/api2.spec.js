@@ -13,7 +13,6 @@ describe('verify the functionality of api',function(){
             // cy.log(headers)
             // cy.log(duration)
 
-
             cy.log(body)
             expect(status).to.eql(200)
             expect(duration).to.be.within(15, 100)
