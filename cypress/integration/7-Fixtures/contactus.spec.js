@@ -13,16 +13,12 @@ describe('verify functionality for contactus form', function () {
 
 
     let info = {
-
         first_name: "amol",
         last_name: "rao",
         email: "amolrao010@gmail.com",
         message: "Hello I am learning JS"
 
     }
-
-
-
 
     it('verify the functionality for contact us form', function () {
         cy.visit('http://www.webdriveruniversity.com/Contact-Us/contactus.html')

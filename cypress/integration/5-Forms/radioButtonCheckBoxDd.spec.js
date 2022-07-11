@@ -73,14 +73,11 @@ describe('verufy the functionality of checkbox, radio Button and Drop down', fun
         })
     })
 
-
-
     it('verify the functionality to check whether the element is enabled or disable',function(){
         cy.get('input[value="cabbage"]').should('be.disabled')
     })
   
     it.only('verify whether the drop down value is disabled',function(){
-
         cy.get('#fruit-selects').children()
         .filter('option[disabled="disabled"]')
         .should('have.text',"Orange").and('be.disabled')
