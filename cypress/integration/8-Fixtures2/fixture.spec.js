@@ -60,7 +60,7 @@ describe('Different ways to use the fixture file', function () {
     })
 
 
-    it.only('Reading the fixture file from import', function () {
+    it.only('Reading the fixture file from import js', function () {
         cy.log(info)
         cy.visit('http://www.webdriveruniversity.com/Contact-Us/contactus.html')
         cy.get('input[name = "first_name"]').type(info.firstName)
@@ -72,9 +72,7 @@ describe('Different ways to use the fixture file', function () {
 
     })
 
-
-
-    it.only('Reading the fixture file from import', function () {
+    it.only('Reading the fixture file from import js', function () {
         cy.log(info)
         cy.visit('http://www.webdriveruniversity.com/Contact-Us/contactus.html')
         cy.get('input[name = "first_name"]').type(info2.firstName)
