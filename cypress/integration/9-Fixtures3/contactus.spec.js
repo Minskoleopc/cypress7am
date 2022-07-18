@@ -6,7 +6,6 @@ describe('verify the conatact us with different data',function(){
 
         cy.fixture('users').then(function(users){
             //cy.log(users)
-
             users.forEach(element => {
                 cy.visit('http://www.webdriveruniversity.com/Contact-Us/contactus.html')
                 cy.get('input[name = "first_name"]').type(element.firstName)
@@ -17,8 +16,6 @@ describe('verify the conatact us with different data',function(){
                 cy.get('h1').should('have.text', 'Thank You for your Message!')
         
             });
-
-
 
         })
 
