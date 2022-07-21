@@ -24,15 +24,15 @@
 /// <reference types="cypress" />
 
 
-describe('verify the graphql apis ',function(){
+describe('verify the graphql apis ', function () {
 
-    it('allToDo',function(){
+    it('allToDo', function () {
         cy.request({
-            method:"POST",
-            url:"http://localhost:3000/",
-            body:{
-                operationName:'allTodos',
-                query:`query allTodos {
+            method: "POST",
+            url: "http://localhost:3000/",
+            body: {
+                operationName: 'allTodos',
+                query: `query allTodos {
                     allTodos {
                       id
                       title
@@ -40,10 +40,10 @@ describe('verify the graphql apis ',function(){
                       __typename
                     }
                   }`,
-                  variables:{}
+                variables: {}
             }
 
-        }).then(function(res){
+        }).then(function (res) {
             //cy.log(res.body.data.allTodos.length)
             expect(res.status).to.eq(200)
             expect(res.body.data.allTodos.length).to.eq(2)
@@ -51,14 +51,130 @@ describe('verify the graphql apis ',function(){
 
     })
 
-    it('addToDO',function(){
+    it('addToDO', function () {
+        cy.request({
+            method: "POST",
+            url: "http://localhost:3000/",
+            body: {
+                operationName: "AddTodo",
+                query: `mutation AddTodo($title: String!) {
+                    createTodo(title: $title, completed: false) {
+                      id
+                      __typename
+                    }
+                  }`,
+                variables: {
+                    "title": "cypress"
+                }
+            }
+        }).then(function (response) {
+            // let obj = response.body.data
+            //cy.log(obj.createTodo)
+            expect(response.status).to.eq(200)
+            expect(response.body.data.createTodo).to.haveOwnProperty('id')
+        })
+    })
+
+
+    it('UpdateToDo', function () {
+        cy.request({
+            method: "POST",
+            url: "http://localhost:3000/",
+            body: {
+                operationName: 'allTodos',
+                query: `query allTodos {
+                    allTodos {
+                      id
+                      title
+                      completed
+                      __typename
+                    }
+                  }`,
+                variables: {}
+            }
+
+        }).then(function (res) {
+            expect(res.status).to.eq(200)
+            let id = res.body.data.allTodos[0].id
+            return id
+        }).then(function (id) {
+            cy.request({
+
+                method: "POST",
+                url: "http://localhost:3000/",
+                body: {
+                    operationName: 'updateTodo',
+                    query: `mutation updateTodo($id: ID!, $completed: Boolean!) {
+                        updateTodo(id: $id, completed: $completed) {
+                          id
+                          title
+                          completed
+                          __typename
+                        }
+                      }`,
+                    variables: {
+                        "id": `${id}`,
+                        "completed": true
+                    }
+                }
+
+            }).then(function (res) {
+                cy.log(res)
+            })
+
+        })
+
+
 
     })
-    it('UpdateToDo',function(){
 
-    })
+    it.only('deleteTodo', function () {
 
-    it('deleteTodo',function(){
+        cy.request({
+            method: "POST",
+            url: "http://localhost:3000/",
+            body: {
+                operationName: 'allTodos',
+                query: `query allTodos {
+                    allTodos {
+                      id
+                      title
+                      completed
+                      __typename
+                    }
+                  }`,
+                variables: {}
+            }
+
+        }).then(function (res) {
+            expect(res.status).to.eq(200)
+            let id = res.body.data.allTodos[0].id
+            return id
+        }).then(function (id) {
+
+            cy.request({
+                method: "POST",
+                url: "http://localhost:3000/",
+                body: {
+                    operationName: 'DeleteTodo',
+                    query: `mutation DeleteTodo($id: ID!) {
+                        removeTodo(id: $id) {
+                          id
+                          __typename
+                        }
+                      }`,
+                    variables: {
+                        "id": `${id}`
+                    }
+                }
+
+            }).then(function(response){
+                expect(response.status).to.eq(200)
+            })
+
+        })
+
+
 
     })
 })
