@@ -26,8 +26,10 @@ describe('verify the UI',function(){
         cy.get('.todo').first().should('have.class','completed')
     })
 
-    it('delete',function(){
+    it.only('delete',function(){
 
+        cy.visit('http://localhost:1234/')
+        cy.get('.destroy').first().click({force:true})
 
     })
 
