@@ -22,7 +22,6 @@ describe('verify the iframe in cypress',function(){
     })
 
     it.skip('verify the iframe element using jquery ',function(){
-
         // ifram tagName -----> contents(document) ------> body ----> wrap----findElement
         cy.visit('https://webdriveruniversity.com/IFrame/index.html')
         cy.get('#frame').then(function($iframe){
@@ -34,7 +33,6 @@ describe('verify the iframe in cypress',function(){
     })
 
     it.only('verify the iframe element using jquery ',function(){
-
         // ifram tagName -----> contents(document) ------> body ----> wrap----findElement
         cy.visit('https://webdriveruniversity.com/IFrame/index.html')
         getIframeBody('frame').then(function(bdy){

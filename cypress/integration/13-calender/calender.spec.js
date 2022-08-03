@@ -48,20 +48,9 @@ describe('verify the date selection in cypress',function(){
         function selectDate(){
             cy.contains(sDate).click()
         }
-
-
-
-
         selectMonthAndDate()
         selectDate()
 
-
-
-
     })
-
-
-
-
 
 })
