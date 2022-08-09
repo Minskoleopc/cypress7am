@@ -1,4 +1,8 @@
 {
     "chromeWebSecurity": false ,
-    "includeShadowDom":true
+    "includeShadowDom":true,
+    "integrationFolder":"cypress/integration/15-windowDocumentwrap",
+    "screenshotOnRunFailure":true,
+    "screenshotsFolder":"cypress/integration/screenshots"
+
 }

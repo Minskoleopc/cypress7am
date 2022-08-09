@@ -11,7 +11,6 @@ describe('window commands',function(){
             expect(win.location.pathname).to.eq('/')
             expect(win.location.protocol).to.eq('https:')
         })
-
     })
 
     it('verify location property of window',function(){
@@ -35,9 +34,7 @@ describe('window commands',function(){
         cy.window().then(function(win){
              win.history.forward()
              cy.get('.maintext').should('contain','Books')
-
         })
-
 
     })
 
