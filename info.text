@@ -2,3 +2,8 @@ npm init
 npm install cypress@9.7
 npm install npx
 npx cypress open
+
+
+npx cypress run --spec 'cypress/integration/15-windowDocumentwrap/wrap.spec.js'
+
+"screenshotsFolder":"cypress/integration/screenshots"
