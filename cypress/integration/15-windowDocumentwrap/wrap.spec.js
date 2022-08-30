@@ -52,6 +52,4 @@ describe('verify the wrap function in cypress', function () {
     })
 
 
-
-
 })
